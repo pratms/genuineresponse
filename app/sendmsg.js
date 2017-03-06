@@ -182,6 +182,8 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
        var twilio = require('twilio');
     var twiml = new twilio.TwimlResponse();
+      var User = require('../app/models/user');
+    var passport = require('passport');
        if (req.body.Body == 'Start') {
       twiml.message('How satisfied are you with the quality of education in your area. Type your AreaCode option \n A.Extermely Satisfied \n B.Moderately Satisfied \n C. Not at all Satisfied \n (eg. 11111 A) send us a reply');
      }
@@ -189,7 +191,13 @@ app.post('/', function(req, res) {
      {
       var string = req.body.Body;
         var from = req.body.From;
-
+      if (req.user.local.email) {
+     var useremail = req.user.local.email;
+    }
+    else
+    {
+      useremail = req.user.facebook.email;
+    }
       string = string.split(" ");
       var stringArray = new Array();
       for(var i =0; i < string.length; i++)
@@ -204,7 +212,7 @@ app.post('/', function(req, res) {
    if (str == 'a') {
             twiml.message('Thanks for your feedback');
             
-          db.details.insert( { number: from, keyword: zip, response: "Excellent"  } )
+          db.details.insert( {user:useremail, number: from, keyword: zip, response: "Excellent"  } )
 
     } 
     
