@@ -10,13 +10,21 @@ var db = mongojs('mongodb://pratik:pratik@ds133438.mlab.com:33438/heroku_9rvcpdq
 //==================================
 //=====================
 var User = require('../app/models/user');
+
 module.exports = function(app){
 
   app.post('/sendmsg', function(req, res) {
     console.log(req.body.num);
     console.log(req.body.que);
     console.log(req.body.radio);
-     console.log(req.user.facebook.email);
+
+     if(req.user.local.email){
+      var useremail = req.user.local.email;
+     }
+     else{
+       var useremail = req.user.facebook.email;
+     }
+     console.log(useremail);
     res.end();
 
     var accountSid  ='ACf71390b66b77f708e838cc74035fa9e7';
@@ -73,16 +81,21 @@ else{
 });
 app.get('/results', function(req, res)
 {
-   db.details.find(function(err, data) 
-  {
+       if(req.user.local.email){
+      var useremail = req.user.local.email;
+     }
+     else{
+       var useremail = req.user.facebook.email;
+     }
+     console.log(useremail);
+   db.details.find({}, function(err, users) {
+    var data = {};
+    users.forEach(function(user) {
+      data[user.user] = useremail;
+    });
 
-     console.log(data);
-     res.json(data);
+    res.json(data);  
   });
-
-
-
-
 });
 app.get('/', function(req, res) {
     var twilio = require('twilio');
@@ -105,18 +118,25 @@ app.get('/', function(req, res) {
       var str = stringArray[1].toLowerCase();
 
       var zip = stringArray[0];
+      if(req.user.local.email){
+      var useremail = req.user.local.email;
+     }
+     else{
+       var useremail = req.user.facebook.email;
+     }
+     console.log(useremail);
 
    if (str == 'a') {
             twiml.message('Thanks for your feedback');
             
-          db.details.insert( { number: from, keyword: zip, response: "Excellent"  } )
+          db.details.insert( {user:useremail, number: from, keyword: zip, response: "Excellent"  } )
 
     } 
     
     else if(str == 'b') {
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, keyword: zip, response: "Very good"  } )
+        db.details.insert( { user:useremail,number: from, keyword: zip, response: "Very good"  } )
     
      } 
      else if(str == 'c') 
@@ -124,7 +144,7 @@ app.get('/', function(req, res) {
 
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, keyword: zip, response: "Satisfactory"  } )
+        db.details.insert( { user:useremail,number: from, keyword: zip, response: "Satisfactory"  } )
      }
 
     else if(str == 'd') 
@@ -132,14 +152,14 @@ app.get('/', function(req, res) {
 
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, keyword: zip, response: "Poor"  } )
+        db.details.insert( { user:useremail,number: from, keyword: zip, response: "Poor"  } )
      }
        else if(str == '1' || str == '2' || str == '3' || str == '4' || str == '5') 
      {
 
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, keyword: zip, response: str  } )
+        db.details.insert( { user:useremail,number: from, keyword: zip, response: str  } )
      }
      else 
      {
@@ -175,18 +195,25 @@ app.post('/', function(req, res) {
       var str = stringArray[1].toLowerCase();
 
       var zip = stringArray[0];
+     if(req.user.local.email){
+      var useremail = req.user.local.email;
+     }
+     else{
+       var useremail = req.user.facebook.email;
+     }
+   
 
    if (str == 'a') {
             twiml.message('Thanks for your feedback');
             
-          db.details.insert( { number: from, keyword: zip, response: "Excellent"  } )
+          db.details.insert( { user:useremail,number: from, keyword: zip, response: "Excellent"  } )
 
     } 
     
     else if(str == 'b') {
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, keyword: zip, response: "Very good"  } )
+        db.details.insert( {user:useremail, number: from, keyword: zip, response: "Very good"  } )
     
      } 
      else if(str == 'c') 
@@ -194,7 +221,7 @@ app.post('/', function(req, res) {
 
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, keyword: zip, response: "Satisfactory"  } )
+        db.details.insert( { user:useremail,number: from, keyword: zip, response: "Satisfactory"  } )
      }
 
     else if(str == 'd') 
@@ -202,14 +229,14 @@ app.post('/', function(req, res) {
 
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, keyword: zip, response: "Poor"  } )
+        db.details.insert( { user:useremail,number: from, keyword: zip, response: "Poor"  } )
      }
          else if(str == '1' || str == '2' || str == '3' || str == '4' || str == '5') 
      {
 
         twiml.message('Thanks for your feedback');
         
-        db.details.insert( { number: from, keyword: zip, response: str  } )
+        db.details.insert( {user:useremail, number: from, keyword: zip, response: str  } )
      }
      else 
      {
