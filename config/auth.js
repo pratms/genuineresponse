@@ -6,7 +6,7 @@ module.exports = {
     'facebookAuth' : {
         'clientID'      : '1309826862389106', // your App ID
         'clientSecret'  : '943cf57a004b77ac8a5d9fe7317616d0', // your App Secret
-        'callbackURL'   : 'http://localhost:8080/auth/facebook/callback'
+        'callbackURL'   : 'https://genuinesurvey.herokuapp.com/auth/facebook/callback'
     },
 
     'twilioAuth' : {
