@@ -1,0 +1,145 @@
+body {
+ width: 100%;
+  height: 100%;
+  background: url('http://unsplash.it/1200x800') center center no-repeat;
+  background-size: cover;
+  
+
+
+}
+
+
+/* Profile container */
+.profile {
+  margin: 20px 0;
+   opacity: 0.8;
+}
+
+/* Profile sidebar */
+.profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #000;
+
+}
+
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  
+  -webkit-border-radius: 40% !important;
+  -moz-border-radius: 40% !important;
+  border-radius: 40% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "ubuntu", cursive;
+  font-weight: 500;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}
+.logout {
+  margin:10px 90px;
+}  
+.profile-usermenu {
+  margin-top: 30px;
+}
+
+.profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+/* Profile Content */
+.profile-content {
+  padding: 20px;
+  background: #000;
+  min-height: 522px;
+  color: #fff;
+
+}
+.close
+{
+  color: #fff;
+  font-size: 20px;
+}
+
+/* The starting CSS styles for the enter animation */
+.fade.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter.ng-enter-active {
+  opacity:1;
+}
+.main-content{
+  margin-top: 60px;
+}
+.trydemo{
+      color: #fff;
+    background-color: #2a2c2d;
+    border-color: #191a1b;
+}
