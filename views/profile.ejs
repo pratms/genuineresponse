@@ -37,10 +37,10 @@
 			</div>
 			<!-- END SIDEBAR USER TITLE -->
 			<!-- SIDEBAR BUTTONS -->
-			<div class="profile-userbuttons">
-				<button type="button" class="btn btn-success btn-sm">Follow</button>
-				<button type="button" class="btn btn-danger btn-sm">Message</button>
-			</div>
+			<!--<div class="profile-userbuttons">
+				<button type="button" class="btn btn-success btn-sm trydemo">Follow</button>
+				<button type="button" class="btn btn-danger btn-sm trydemo">Message</button>
+			</div> -->
 			<!-- END SIDEBAR BUTTONS -->
 			<!-- SIDEBAR MENU -->
 			<div class="profile-usermenu">
@@ -48,18 +48,14 @@
 					<li class="active">
 						<a href="#">
 						<i class="glyphicon glyphicon-home"></i>
-						Overview </a>
+						Dashboard</a>
 					</li>
 					<li>
 						<a href="#">
 						<i class="glyphicon glyphicon-user"></i>
 						Account Settings </a>
 					</li>
-					<li>
-						<a href="#" target="_blank">
-						<i class="glyphicon glyphicon-ok"></i>
-						Tasks </a>
-					</li>
+					
 					<li>
 						<a href="#">
 						<i class="glyphicon glyphicon-flag"></i>
@@ -81,8 +77,9 @@
 <button ng-click="demo=false"  ng-hide="buttons" class="btn btn-success btn-sm trydemo">BACK!</button>
 </div>
 <div class="main-content col-md-6 col-md-offset-3" >
-<h3 ng-show="formData.search" >{{success}}</h3>
+
 <form class="form-horizontal span5" ng-show="demo">
+<h3 ng-show="formData.search" >{{success}}</h3>
 <h4>'How satisfied are you with the quality of education in your area?'<button type="button" class="close"  data-dismiss="modal" aria-label="Close"><span ng-click="openeditform()" class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button> </h4>
 
 
